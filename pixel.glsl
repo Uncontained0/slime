@@ -1,11 +1,12 @@
 #ifdef PIXEL
 
-uniform float r = 3.0;
+uniform float r = 1.0;
+uniform float diffuseRate = 10.0;
 uniform vec2 imageSize;
 
 vec4 effect( vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords )
 {
-    vec4 final = vec4(0.0);
+    vec4 final = vec4(0);
 
     for(float x = -r; x <= r; x += 1.0)
     {
@@ -14,8 +15,10 @@ vec4 effect( vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords )
             final += Texel(tex, texture_coords + (vec2(x,y)/imageSize) );
         }
     }
+    
+    final = final / 9;
 
-    return final / ((2.0 * r + 1.0) * (2.0 * r + 1.0));
+    return final - (final / vec4(diffuseRate));
 }
 
 #endif
