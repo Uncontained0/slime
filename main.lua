@@ -1,4 +1,4 @@
-local sizex,sizey,scale = 800,800,1
+local sizex,sizey,scale = 400,400,2
 local speed = 0.8
 
 local shader = love.graphics.newShader("pixel.glsl")
@@ -57,7 +57,7 @@ function love.load()
 		shader:send("diffuseRate",15)
 	end)
 
-	makeAgents(1500)
+	makeAgents(500)
 
 	canvas1:renderTo(function()
 		love.graphics.clear()
