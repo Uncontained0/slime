@@ -1,8 +1,8 @@
 #ifdef PIXEL
 
-uniform float r = 1.0;
-uniform float diffuseRate = 10.0;
 uniform vec2 imageSize;
+
+float r = 1.0;
 
 vec4 effect( vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords )
 {
@@ -18,7 +18,7 @@ vec4 effect( vec4 color, Image tex, vec2 texture_coords, vec2 screen_coords )
     
     final = final / 9;
 
-    return final - (final / vec4(diffuseRate));
+    return final;
 }
 
 #endif
